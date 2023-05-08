@@ -32,6 +32,9 @@ ec.onJoin = {}
 ec.onLeave = {}
 ec.onDisband = {}
 ec.onShareExperience = {}
+ec.onInvite = {}
+ec.onRevokeInvitation = {}
+ec.onPassLeadership = {}
 -- Player
 ec.onLook = {[5] = 1}
 ec.onLookInBattleList = {[4] = 1}
