@@ -138,6 +138,14 @@ class ConfigManager
 
 			LAST_INTEGER_CONFIG /* this must be the last one */
 		};
+		
+		enum floating_config_t {
+			MLVL_BONUSDMG,
+			MLVL_BONUSSPEED,
+			MLVL_BONUSHP,
+
+			LAST_FLOATING_CONFIG
+		};
 
 		bool load();
 		bool reload();
@@ -145,6 +153,7 @@ class ConfigManager
 		const std::string& getString(string_config_t what) const;
 		int32_t getNumber(integer_config_t what) const;
 		bool getBoolean(boolean_config_t what) const;
+		float getFloat(floating_config_t what) const;
 		float getExperienceStage(uint32_t level) const;
 
 		bool setString(string_config_t what, const std::string& value);
@@ -155,6 +164,7 @@ class ConfigManager
 		std::string string[LAST_STRING_CONFIG] = {};
 		int32_t integer[LAST_INTEGER_CONFIG] = {};
 		bool boolean[LAST_BOOLEAN_CONFIG] = {};
+		float floating[LAST_FLOATING_CONFIG] = {};
 
 		ExperienceStages expStages = {};
 
