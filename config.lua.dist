@@ -134,10 +134,12 @@ experienceStages = {
 
 -- Rates
 -- NOTE: rateExp is not used if you have enabled stages above
+-- rateSpellCooldown lowering it makes the cooldown less.
 rateExp = 5
 rateSkill = 3
 rateLoot = 2
 rateMagic = 3
+rateSpellCooldown = 1
 rateSpawn = 1
 
 -- Monster Level System --

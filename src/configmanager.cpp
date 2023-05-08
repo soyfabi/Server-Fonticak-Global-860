@@ -323,6 +323,8 @@ bool ConfigManager::load()
 	floating[MLVL_BONUSDMG] = getGlobalFloat(L, "monsterBonusDamage", 0);
 	floating[MLVL_BONUSSPEED] = getGlobalFloat(L, "monsterBonusSpeed", 0);
 	floating[MLVL_BONUSHP] = getGlobalFloat(L, "monsterBonusHealth", 0);
+	
+	floating[RATE_SPELL_COOLDOWN] = getGlobalFloat(L, "rateSpellCooldown", 1.0);
 
 	expStages = loadXMLStages();
 	if (expStages.empty()) {
