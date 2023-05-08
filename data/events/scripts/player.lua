@@ -126,9 +126,14 @@ local function useStamina(player)
 end
 
 function Player:onGainExperience(source, exp, rawExp)
-	if not source or source:isPlayer() then
-		return exp
-	end
+
+	-- Monster Level --
+	if source:isMonster() then
+        local bonusExperience = source:getMonsterLevel() * 0.03
+        if source:getMonsterLevel() > 0 and bonusExperience > 1 then
+            exp = exp * bonusExperience
+        end
+    end
 
 	-- Soul regeneration
 	local vocation = self:getVocation()
