@@ -188,3 +188,9 @@ function Player:onGainSkillTries(skill, tries)
 	tries = tries * configManager.getNumber(configKeys.RATE_SKILL)
 	return hasEvent.onGainSkillTries and Event.onGainSkillTries(self, skill, tries) or tries
 end
+
+function Player:onInventoryUpdate(item, slot, equip)
+	if hasEvent.onInventoryUpdate then
+		Event.onInventoryUpdate(self, item, slot, equip)
+	end
+end
