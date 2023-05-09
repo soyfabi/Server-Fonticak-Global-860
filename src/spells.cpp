@@ -927,7 +927,7 @@ bool InstantSpell::playerCastInstant(Player* player, std::string& param)
 			}
 
 			target = playerTarget;
-			if (!target || target->getHealth() <= 0) {
+			if (!target || target->isDead()) {
 				if (!casterTargetOrDirection) {
 					applyCooldownConditions(player);
 					player->sendCancelMessage(ret);
@@ -943,7 +943,7 @@ bool InstantSpell::playerCastInstant(Player* player, std::string& param)
 			}
 		} else {
 			target = player->getAttackedCreature();
-			if (!target || target->getHealth() <= 0) {
+			if (!target || target->isDead()) {
 				if (!casterTargetOrDirection) {
 					applyCooldownConditions(player);
 					player->sendCancelMessage(RETURNVALUE_YOUCANONLYUSEITONCREATURES);
@@ -1023,7 +1023,7 @@ bool InstantSpell::castSpell(Creature* creature)
 
 	if (casterTargetOrDirection) {
 		Creature* target = creature->getAttackedCreature();
-		if (target && target->getHealth() > 0) {
+		if (target && !target->isDead()) {
 			if (!canThrowSpell(creature, target)) {
 				return false;
 			}
