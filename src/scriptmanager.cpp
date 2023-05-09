@@ -98,12 +98,7 @@ bool ScriptingManager::loadScriptSystems()
 		std::cout << "> ERROR: Unable to load move events!" << std::endl;
 		return false;
 	}
-
 	g_creatureEvents = new CreatureEvents();
-	if (!g_creatureEvents->loadFromXml()) {
-		std::cout << "> ERROR: Unable to load creature events!" << std::endl;
-		return false;
-	}
 	g_globalEvents = new GlobalEvents();
 	g_events = new Events();
 	if (!g_events->load()) {

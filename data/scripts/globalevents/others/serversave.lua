@@ -45,4 +45,4 @@ function serversave.onTime(interval)
 end
 
 serversave:time("07:00:00")
-serversave:register()
+--serversave:register()
