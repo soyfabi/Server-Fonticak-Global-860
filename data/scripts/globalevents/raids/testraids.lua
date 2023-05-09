@@ -42,4 +42,4 @@ function raid.onTime(interval)
     return true
 end
 
-raid:register()
+--raid:register()
