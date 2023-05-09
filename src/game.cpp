@@ -938,9 +938,7 @@ void Game::playerMoveItem(Player* player, const Position& fromPos,
 			g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 			                                this, player->getID(), std::move(listDir))));
 
-			SchedulerTask* task = createSchedulerTask(
-			g_config.getNumber(ConfigManager::PUSH_ITEM_DELAY),	
-			std::bind(&Game::playerMoveItemByPlayerID, this,
+			SchedulerTask* task = createSchedulerTask(RANGE_MOVE_ITEM_INTERVAL,	std::bind(&Game::playerMoveItemByPlayerID, this,
 			player->getID(), fromPos, spriteId, fromStackPos, toPos, count));
 			player->setNextWalkActionTask(task);
 		} else {
@@ -999,9 +997,7 @@ void Game::playerMoveItem(Player* player, const Position& fromPos,
 				g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 				                                this, player->getID(), std::move(listDir))));
 
-				SchedulerTask* task = createSchedulerTask(
-				g_config.getNumber(ConfigManager::PUSH_ITEM_DELAY), 
-				std::bind(&Game::playerMoveItemByPlayerID, this,
+				SchedulerTask* task = createSchedulerTask(RANGE_MOVE_ITEM_INTERVAL, std::bind(&Game::playerMoveItemByPlayerID, this,
 				player->getID(), itemPos, spriteId, itemStackPos, toPos, count));
 				player->setNextWalkActionTask(task);
 			} else {

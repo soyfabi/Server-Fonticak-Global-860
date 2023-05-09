@@ -335,7 +335,6 @@ bool ConfigManager::load()
 	integer[STAMINA_TRAINER_DELAY] = getGlobalNumber(L, "staminaTrainerDelay", 5);
 	integer[STAMINA_TRAINER_GAIN] = getGlobalNumber(L, "staminaTrainerGain", 1);
 	integer[PUSH_DELAY] = getGlobalNumber(L, "pushDelay", 1000);
-	integer[PUSH_ITEM_DELAY] = getGlobalNumber(L, "pushItemDelay", 1000);
 	integer[PUSH_DISTANCE_DELAY] = getGlobalNumber(L, "pushDistanceDelay", 1500);
 	integer[RATE_START_EFFECT] = getGlobalNumber(L, "timeStartEffect", 4200);
 	integer[RATE_BETWEEN_EFFECT] = getGlobalNumber(L, "timeBetweenTeleportEffects", 1400);

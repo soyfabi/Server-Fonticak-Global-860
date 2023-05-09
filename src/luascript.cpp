@@ -2116,7 +2116,6 @@ void LuaScriptInterface::registerFunctions()
 	
 	// Push Delays
 	registerEnumIn("configKeys", ConfigManager::PUSH_DELAY);
-	registerEnumIn("configKeys", ConfigManager::PUSH_ITEM_DELAY);
 	registerEnumIn("configKeys", ConfigManager::PUSH_DISTANCE_DELAY);
 	registerEnumIn("configKeys", ConfigManager::PUSH_CRUZADO);
 	

@@ -69,6 +69,7 @@ static constexpr int32_t EVENT_WORLDTIMEINTERVAL = 2500;
 static constexpr int32_t EVENT_DECAYINTERVAL = 250;
 static constexpr int32_t EVENT_DECAY_BUCKETS = 4;
 
+static constexpr int32_t RANGE_MOVE_ITEM_INTERVAL = 100;
 static constexpr int32_t RANGE_USE_ITEM_INTERVAL = 100;
 static constexpr int32_t RANGE_USE_ITEM_EX_INTERVAL = 100;
 static constexpr int32_t RANGE_USE_WITH_CREATURE_INTERVAL = 100;

@@ -66,9 +66,8 @@ timeBetweenExActions = 1000
 -- NOTE: pushDelay: interval for every push
 -- NOTE: pushDistanceDelay: delay for every distance push
 -- NOTE: pushCruzado: At the moment of pushing, the action will remain in execution until the target has been pushed.
-pushDelay = 1000
-pushItemDelay = 1000
-pushDistanceDelay = 1500
+pushDelay = 1200
+pushDistanceDelay = 0
 pushCruzado = true
 
 -- Map
