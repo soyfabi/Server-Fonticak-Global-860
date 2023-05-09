@@ -28,7 +28,6 @@
 #include "item.h"
 #include "container.h"
 #include "player.h"
-#include "raids.h"
 #include "npc.h"
 #include "wildcardtree.h"
 #include "quests.h"
@@ -494,7 +493,6 @@ class Game
 
 		Groups groups;
 		Map map;
-		Raids raids;
 		Quests quests;
 
 		std::forward_list<Item*> toDecayItems;
