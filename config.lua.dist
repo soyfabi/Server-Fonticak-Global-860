@@ -27,7 +27,7 @@ gameProtocolPort = 7172
 statusProtocolPort = 7171
 maxPlayers = 0
 motd = "Welcome to The Forgotten Server!"
-onePlayerOnlinePerAccount = true
+onePlayerOnlinePerAccount = false
 allowClones = false
 allowWalkthrough = true
 serverName = "Forgotten"
@@ -146,6 +146,15 @@ rateSpawn = 1
 monsterBonusHealth = 0.5
 monsterBonusSpeed = 0.02
 monsterBonusDamage = 0.02
+
+-- Today regeneration condition over an loop every 1 second,
+-- So values which should regenerated less then 1 second or won't will work
+rateHealthRegen = 1.0
+rateHealthRegenSpeed = 1.0
+rateManaRegen = 1.0
+rateManaRegenSpeed = 1.0
+rateSoulRegen = 1.0
+rateSoulRegenSpeed = 1.0
 
 -- Sort loot by chance, most rare items drop first
 -- it is good to be setted when you have a higher
