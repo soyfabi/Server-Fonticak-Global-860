@@ -63,4 +63,3 @@ class DepotLocker final : public Container
 };
 
 #endif
-
