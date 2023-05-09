@@ -55,6 +55,15 @@ onlyInvitedCanMoveHouseItems = true
 timeBetweenActions = 200
 timeBetweenExActions = 1000
 
+-- Push
+-- NOTE: pushDelay: interval for every push
+-- NOTE: pushDistanceDelay: delay for every distance push
+-- NOTE: pushCruzado: At the moment of pushing, the action will remain in execution until the target has been pushed.
+pushDelay = 1000
+pushItemDelay = 1000
+pushDistanceDelay = 1500
+pushCruzado = true
+
 -- Map
 -- NOTE: set mapName WITHOUT .otbm at the end
 mapName = "forgotten"

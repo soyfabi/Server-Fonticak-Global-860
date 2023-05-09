@@ -279,6 +279,7 @@ bool ConfigManager::load()
 	boolean[SORT_LOOT_BY_CHANCE] = getGlobalBoolean(L, "sortLootByChance", false);
 	boolean[STAMINA_TRAINER] = getGlobalBoolean(L, "staminaTrainer", false);
 	boolean[STAMINA_PZ] = getGlobalBoolean(L, "staminaPz", false);
+	boolean[PUSH_CRUZADO] = getGlobalBoolean(L, "pushCruzado", true);
 
 	string[DEFAULT_PRIORITY] = getGlobalString(L, "defaultPriority", "high");
 	string[SERVER_NAME] = getGlobalString(L, "serverName", "");
@@ -327,6 +328,9 @@ bool ConfigManager::load()
 	integer[STAMINA_GREEN_DELAY] = getGlobalNumber(L, "staminaGreenDelay", 5);
 	integer[STAMINA_TRAINER_DELAY] = getGlobalNumber(L, "staminaTrainerDelay", 5);
 	integer[STAMINA_TRAINER_GAIN] = getGlobalNumber(L, "staminaTrainerGain", 1);
+	integer[PUSH_DELAY] = getGlobalNumber(L, "pushDelay", 1000);
+	integer[PUSH_ITEM_DELAY] = getGlobalNumber(L, "pushItemDelay", 1000);
+	integer[PUSH_DISTANCE_DELAY] = getGlobalNumber(L, "pushDistanceDelay", 1500);
 	
 	
 	//Floating ConfigManager

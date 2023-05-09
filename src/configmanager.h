@@ -72,6 +72,7 @@ class ConfigManager
 			SORT_LOOT_BY_CHANCE,
 			STAMINA_TRAINER,
 			STAMINA_PZ,
+			PUSH_CRUZADO,
 
 			LAST_BOOLEAN_CONFIG /* this must be the last one */
 		};
@@ -142,7 +143,10 @@ class ConfigManager
 			STAMINA_ORANGE_DELAY,
 			STAMINA_GREEN_DELAY,
 			STAMINA_TRAINER_DELAY,
-			STAMINA_TRAINER_GAIN,
+			STAMINA_TRAINER_GAIN,		
+			PUSH_DELAY,
+			PUSH_ITEM_DELAY,
+			PUSH_DISTANCE_DELAY,
 
 			LAST_INTEGER_CONFIG /* this must be the last one */
 		};

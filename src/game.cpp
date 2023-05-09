@@ -638,9 +638,10 @@ void Game::playerMoveThing(uint32_t playerId, const Position& fromPos,
 		}
 
 		if (Position::areInRange<1, 1, 0>(movingCreature->getPosition(), player->getPosition())) {
-			SchedulerTask* task = createSchedulerTask(MOVE_CREATURE_INTERVAL,
-			                      std::bind(&Game::playerMoveCreatureByID, this, player->getID(),
-			                                  movingCreature->getID(), movingCreature->getPosition(), tile->getPosition()));
+			SchedulerTask* task = createSchedulerTask(
+			g_config.getNumber(ConfigManager::PUSH_DELAY),
+			std::bind(&Game::playerMoveCreatureByID, this, player->getID(),
+			movingCreature->getID(), movingCreature->getPosition(), tile->getPosition()));
 			player->setNextActionTask(task);
 		} else {
 			playerMoveCreature(player, movingCreature, movingCreature->getPosition(), tile);
@@ -700,8 +701,10 @@ void Game::playerMoveCreature(Player* player, Creature* movingCreature, const Po
 		if (player->getPathTo(movingCreatureOrigPos, listDir, 0, 1, true, true)) {
 			g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 			                                this, player->getID(), std::move(listDir))));
-			SchedulerTask* task = createSchedulerTask(RANGE_MOVE_CREATURE_INTERVAL, std::bind(&Game::playerMoveCreatureByID, this,
-				player->getID(), movingCreature->getID(), movingCreatureOrigPos, toTile->getPosition()));
+			SchedulerTask* task = createSchedulerTask(
+			g_config.getNumber(ConfigManager::PUSH_DISTANCE_DELAY), 
+			std::bind(&Game::playerMoveCreatureByID, this,
+			player->getID(), movingCreature->getID(), movingCreatureOrigPos, toTile->getPosition()));
 			player->setNextWalkActionTask(task);
 		} else {
 			player->sendCancelMessage(RETURNVALUE_THEREISNOWAY);
@@ -938,8 +941,10 @@ void Game::playerMoveItem(Player* player, const Position& fromPos,
 			g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 			                                this, player->getID(), std::move(listDir))));
 
-			SchedulerTask* task = createSchedulerTask(RANGE_MOVE_ITEM_INTERVAL, std::bind(&Game::playerMoveItemByPlayerID, this,
-			                      player->getID(), fromPos, spriteId, fromStackPos, toPos, count));
+			SchedulerTask* task = createSchedulerTask(
+			g_config.getNumber(ConfigManager::PUSH_ITEM_DELAY),	
+			std::bind(&Game::playerMoveItemByPlayerID, this,
+			player->getID(), fromPos, spriteId, fromStackPos, toPos, count));
 			player->setNextWalkActionTask(task);
 		} else {
 			player->sendCancelMessage(RETURNVALUE_THEREISNOWAY);
@@ -997,8 +1002,10 @@ void Game::playerMoveItem(Player* player, const Position& fromPos,
 				g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 				                                this, player->getID(), std::move(listDir))));
 
-				SchedulerTask* task = createSchedulerTask(RANGE_MOVE_ITEM_INTERVAL, std::bind(&Game::playerMoveItemByPlayerID, this,
-				                      player->getID(), itemPos, spriteId, itemStackPos, toPos, count));
+				SchedulerTask* task = createSchedulerTask(
+				g_config.getNumber(ConfigManager::PUSH_ITEM_DELAY), 
+				std::bind(&Game::playerMoveItemByPlayerID, this,
+				player->getID(), itemPos, spriteId, itemStackPos, toPos, count));
 				player->setNextWalkActionTask(task);
 			} else {
 				player->sendCancelMessage(RETURNVALUE_THEREISNOWAY);
@@ -1754,7 +1761,11 @@ void Game::playerMove(uint32_t playerId, Direction direction)
 	}
 
 	player->resetIdleTime();
-	player->setNextWalkActionTask(nullptr);
+	
+	// Testar push cruzado
+	if (!g_config.getBoolean(ConfigManager::PUSH_CRUZADO)){
+		player->setNextWalkActionTask(nullptr);
+	}
 
 	player->startAutoWalk(direction);
 }
