@@ -175,6 +175,15 @@ walkToSpawnRadius = 15
 
 -- Stamina
 staminaSystem = true
+-- Stamina in Trainers
+staminaTrainer = true
+staminaTrainerDelay = 5
+staminaTrainerGain = 1
+-- Stamina in PZ
+staminaPz = true
+staminaOrangeDelay = 1
+staminaGreenDelay = 5
+staminaPzGain = 1
 
 -- Max players allowed on a dummy.
 maxAllowedOnADummy = 5

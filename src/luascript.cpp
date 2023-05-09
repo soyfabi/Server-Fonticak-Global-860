@@ -2082,7 +2082,13 @@ void LuaScriptInterface::registerFunctions()
 	registerEnumIn("configKeys", ConfigManager::PLAYER_CONSOLE_LOGS)
 	
 	registerEnumIn("configKeys", ConfigManager::SORT_LOOT_BY_CHANCE);	
-	registerEnumIn("configKeys", ConfigManager::MAX_ALLOWED_ON_A_DUMMY);
+	registerEnumIn("configKeys", ConfigManager::STAMINA_TRAINER);
+	registerEnumIn("configKeys", ConfigManager::STAMINA_PZ);
+	registerEnumIn("configKeys", ConfigManager::STAMINA_PZ_GAIN);
+	registerEnumIn("configKeys", ConfigManager::STAMINA_ORANGE_DELAY);
+	registerEnumIn("configKeys", ConfigManager::STAMINA_GREEN_DELAY);
+	registerEnumIn("configKeys", ConfigManager::STAMINA_TRAINER_DELAY);
+	registerEnumIn("configKeys", ConfigManager::STAMINA_TRAINER_GAIN);
 	
 	// Rates
 	registerEnumIn("configKeys", ConfigManager::RATE_HEALTH_REGEN);
