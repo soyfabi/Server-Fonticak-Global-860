@@ -768,17 +768,6 @@ class Player final : public Creature, public Cylinder
 			}
 		}
 		
-		void sendSpellCooldown(uint16_t spellId, uint32_t time) {
-			if (client) {
-				client->sendSpellCooldown(spellId, time);
-			}
-		}
-		void sendSpellGroupCooldown(SpellGroup_t groupId, uint32_t time) {
-			if (client) {
-				client->sendSpellGroupCooldown(groupId, time);
-			}
-		}
-		
 		void sendAnimatedText(const std::string& message, const Position& pos, TextColor_t color) {
 			if (client) {
 				client->sendAnimatedText(message, pos, color);
