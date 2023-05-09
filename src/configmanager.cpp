@@ -337,6 +337,8 @@ bool ConfigManager::load()
 	integer[PUSH_DELAY] = getGlobalNumber(L, "pushDelay", 1000);
 	integer[PUSH_ITEM_DELAY] = getGlobalNumber(L, "pushItemDelay", 1000);
 	integer[PUSH_DISTANCE_DELAY] = getGlobalNumber(L, "pushDistanceDelay", 1500);
+	integer[RATE_START_EFFECT] = getGlobalNumber(L, "timeStartEffect", 4200);
+	integer[RATE_BETWEEN_EFFECT] = getGlobalNumber(L, "timeBetweenTeleportEffects", 1400);
 	
 	
 	//Floating ConfigManager

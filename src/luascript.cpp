@@ -2120,6 +2120,10 @@ void LuaScriptInterface::registerFunctions()
 	registerEnumIn("configKeys", ConfigManager::PUSH_DISTANCE_DELAY);
 	registerEnumIn("configKeys", ConfigManager::PUSH_CRUZADO);
 	
+	// Spawn Effect Rates
+	registerEnumIn("configKeys", ConfigManager::RATE_START_EFFECT);
+	registerEnumIn("configKeys", ConfigManager::RATE_BETWEEN_EFFECT);
+	
 	// Login Text when Server is Closed
 	registerEnumIn("configKeys", ConfigManager::BLOCK_LOGIN);
 	registerEnumIn("configKeys", ConfigManager::BLOCK_LOGIN_TEXT);

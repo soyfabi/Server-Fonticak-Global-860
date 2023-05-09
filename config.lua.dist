@@ -40,7 +40,7 @@ allowWalkthrough = true
 serverName = "Forgotten"
 statusTimeout = 5000
 replaceKickOnLogin = true
-maxPacketsPerSecond = 25
+maxPacketsPerSecond = 300
 
 -- Deaths
 -- NOTE: Leave deathLosePercent as -1 if you want to use the default
@@ -100,9 +100,9 @@ allowChangeOutfit = true
 freePremium = false
 kickIdlePlayerAfterMinutes = 15
 maxMessageBuffer = 4
-emoteSpells = false
-classicEquipmentSlots = false
-classicAttackSpeed = false
+emoteSpells = true
+classicEquipmentSlots = true
+classicAttackSpeed = true
 showScriptsLogInConsole = false
 showOnlineStatusInCharlist = false
 yellMinimumLevel = 2
@@ -170,6 +170,12 @@ rateManaRegen = 1.0
 rateManaRegenSpeed = 1.0
 rateSoulRegen = 1.0
 rateSoulRegenSpeed = 1.0
+
+-- Rate Spawn Effect --
+-- timeStartEffect = Effect time that it will do when this point reappears.
+-- timeBetweenTeleportEffects = Time of effect that it will do at the beginning.
+timeStartEffect = 4200
+timeBetweenTeleportEffects = 1400
 
 -- Sort loot by chance, most rare items drop first
 -- it is good to be setted when you have a higher

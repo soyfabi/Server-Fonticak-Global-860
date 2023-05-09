@@ -153,6 +153,8 @@ class ConfigManager
 			PUSH_DELAY,
 			PUSH_ITEM_DELAY,
 			PUSH_DISTANCE_DELAY,
+			RATE_START_EFFECT,
+			RATE_BETWEEN_EFFECT,
 
 			LAST_INTEGER_CONFIG /* this must be the last one */
 		};
