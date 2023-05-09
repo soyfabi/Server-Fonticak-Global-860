@@ -167,6 +167,10 @@ walkToSpawnRadius = 15
 -- Stamina
 staminaSystem = true
 
+-- Max players allowed on a dummy.
+maxAllowedOnADummy = 5
+rateExerciseTrainingSpeed = 1
+
 -- Scripts
 warnUnsafeScripts = true
 convertUnsafeScripts = true

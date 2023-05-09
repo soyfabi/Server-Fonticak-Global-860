@@ -1,8 +1,6 @@
 math.randomseed(os.time())
 dofile('data/lib/lib.lua')
 
-
-
 function getDistanceBetween(firstPosition, secondPosition)
 	local xDif = math.abs(firstPosition.x - secondPosition.x)
 	local yDif = math.abs(firstPosition.y - secondPosition.y)

@@ -1,9 +1,38 @@
-local event = Event()
+local exercise_ids = {
+	28540,
+	28552,
+	35279,
+	35285,
+	28553,	
+	28541,
+	35280,
+	35286,
+	28554,
+	28542,
+	35281,
+	35287,
+	28544,
+	28556,
+	35283,
+	35289,
+	28543,
+	28555,
+	35282,
+	35288,
+	28545,
+	28557,
+	35284,
+	35290,
+}
 
+local event = Event()
 event.onMoveItem = function(self, item, count, fromPosition, toPosition, fromCylinder, toCylinder)
-	if toPosition.x ~= CONTAINER_POSITION then
-		return true
-	end
+
+	-- Exercise Weapons
+    if isInArray(exercise_ids,item.itemid) then
+        self:sendCancelMessage('You cannot move this item outside this container.')
+        return false
+    end
 
 	if item:getTopParent() == self and bit.band(toPosition.y, 0x40) == 0 then
 		local itemType, moveItem = ItemType(item:getId())

@@ -135,6 +135,7 @@ class ConfigManager
 			VIP_PREMIUM_LIMIT,
 			DEPOT_FREE_LIMIT,
 			DEPOT_PREMIUM_LIMIT,
+			MAX_ALLOWED_ON_A_DUMMY,
 
 			LAST_INTEGER_CONFIG /* this must be the last one */
 		};
@@ -145,6 +146,7 @@ class ConfigManager
 			MLVL_BONUSHP,
 			
 			RATE_SPELL_COOLDOWN,
+			RATE_EXERCISE_TRAINING_SPEED,
 
 			LAST_FLOATING_CONFIG
 		};

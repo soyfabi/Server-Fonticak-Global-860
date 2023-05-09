@@ -2080,7 +2080,13 @@ void LuaScriptInterface::registerFunctions()
 	registerEnumIn("configKeys", ConfigManager::EXP_FROM_PLAYERS_LEVEL_RANGE)
 	registerEnumIn("configKeys", ConfigManager::MAX_PACKETS_PER_SECOND)
 	registerEnumIn("configKeys", ConfigManager::PLAYER_CONSOLE_LOGS)
-	registerEnumIn("configKeys", ConfigManager::SORT_LOOT_BY_CHANCE);
+	
+	registerEnumIn("configKeys", ConfigManager::SORT_LOOT_BY_CHANCE);	
+	registerEnumIn("configKeys", ConfigManager::MAX_ALLOWED_ON_A_DUMMY);
+	
+	// Rates
+	registerEnumIn("configKeys", ConfigManager::RATE_SPELL_COOLDOWN);
+	registerEnumIn("configKeys", ConfigManager::RATE_EXERCISE_TRAINING_SPEED);
 
 	// os
 	registerMethod("os", "mtime", LuaScriptInterface::luaSystemTime);
