@@ -156,7 +156,6 @@ rateSkill = 3
 rateLoot = 2
 rateMagic = 3
 rateSpellCooldown = 1
-rateSpawn = 1
 
 -- Monster Level System --
 monsterBonusHealth = 0.5
