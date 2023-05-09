@@ -849,7 +849,7 @@ void Player::sendPing()
 	}
 
 	if (noPongTime >= noPongKickTime) {
-		if (isConnecting || getTile()->hasFlag(TILESTATE_NOLOGOUT)) {
+		if (isConnecting || (getTile() && getTile()->hasFlag(TILESTATE_NOLOGOUT)) || pzLocked) {
 			return;
 		}
 
