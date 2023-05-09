@@ -2097,6 +2097,8 @@ void LuaScriptInterface::registerFunctions()
 	registerEnumIn("configKeys", ConfigManager::PLAYER_CONSOLE_LOGS)
 	
 	registerEnumIn("configKeys", ConfigManager::SORT_LOOT_BY_CHANCE);	
+	
+	// Stamina Configs
 	registerEnumIn("configKeys", ConfigManager::STAMINA_TRAINER);
 	registerEnumIn("configKeys", ConfigManager::STAMINA_PZ);
 	registerEnumIn("configKeys", ConfigManager::STAMINA_PZ_GAIN);
@@ -2104,10 +2106,16 @@ void LuaScriptInterface::registerFunctions()
 	registerEnumIn("configKeys", ConfigManager::STAMINA_GREEN_DELAY);
 	registerEnumIn("configKeys", ConfigManager::STAMINA_TRAINER_DELAY);
 	registerEnumIn("configKeys", ConfigManager::STAMINA_TRAINER_GAIN);
+	
+	// Push Delays
 	registerEnumIn("configKeys", ConfigManager::PUSH_DELAY);
 	registerEnumIn("configKeys", ConfigManager::PUSH_ITEM_DELAY);
 	registerEnumIn("configKeys", ConfigManager::PUSH_DISTANCE_DELAY);
 	registerEnumIn("configKeys", ConfigManager::PUSH_CRUZADO);
+	
+	// Login Text when Server is Closed
+	registerEnumIn("configKeys", ConfigManager::BLOCK_LOGIN);
+	registerEnumIn("configKeys", ConfigManager::BLOCK_LOGIN_TEXT);
 	
 	// Rates
 	registerEnumIn("configKeys", ConfigManager::RATE_HEALTH_REGEN);
@@ -2116,8 +2124,7 @@ void LuaScriptInterface::registerFunctions()
 	registerEnumIn("configKeys", ConfigManager::RATE_MANA_REGEN_SPEED);
 	registerEnumIn("configKeys", ConfigManager::RATE_SOUL_REGEN);
 	registerEnumIn("configKeys", ConfigManager::RATE_SOUL_REGEN_SPEED);
-	registerEnumIn("configKeys", ConfigManager::RATE_ATTACK_SPEED);
-	
+	registerEnumIn("configKeys", ConfigManager::RATE_ATTACK_SPEED);	
 	registerEnumIn("configKeys", ConfigManager::RATE_SPELL_COOLDOWN);
 	registerEnumIn("configKeys", ConfigManager::RATE_EXERCISE_TRAINING_SPEED);
 
