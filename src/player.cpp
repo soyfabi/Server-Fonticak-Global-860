@@ -633,8 +633,9 @@ uint16_t Player::getLookCorpse() const
 	return ITEM_MALE_CORPSE;
 }
 
-void Player::addStorageValue(const uint32_t key, const int32_t value, const bool isLogin/* = false*/)
+void Player::addStorageValue(const uint32_t key, const std::optional<int32_t> data, const bool isLogin /* = false*/)
 {
+	int32_t value = data ? data.value() : -1;
 	if (IS_IN_KEYRANGE(key, RESERVED_RANGE)) {
 		if (IS_IN_KEYRANGE(key, OUTFITS_RANGE)) {
 			outfits.emplace_back(
@@ -648,7 +649,7 @@ void Player::addStorageValue(const uint32_t key, const int32_t value, const bool
 		}
 	}
 
-	if (value != -1) {
+	if (data) {
 		int32_t oldValue;
 		getStorageValue(key, oldValue);
 
@@ -3413,7 +3414,7 @@ void Player::onAttackedCreature(Creature* target, bool addFightTicks /* = true *
 			sendIcons();
 		}
 		
-		//Not receiving Condition when attacked by player.
+		// Not receiving Condition when attacked by player.
 		//targetPlayer->addInFightTicks();
 
 		if (getSkull() == SKULL_NONE && getSkullClient(targetPlayer) == SKULL_YELLOW) {
