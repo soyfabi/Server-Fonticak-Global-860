@@ -4376,6 +4376,7 @@
 	<item id="2593" article="a" name="mailbox">
 		<attribute key="description" value="Royal Tibia Mail." />
 		<attribute key="type" value="mailbox" />
+		<attribute key="containerSize" value="30" />
 	</item>
 	<item id="2594" article="a" name="depot chest">
 		<attribute key="containerSize" value="16" />
