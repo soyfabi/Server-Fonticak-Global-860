@@ -1095,13 +1095,7 @@ bool InstantSpell::canCast(const Player* player) const
 	}
 
 	if (isLearnable()) {
-		if (player->hasLearnedInstantSpell(getName())) {
-			return true;
-		}
-	} else {
-		if (vocSpellMap.empty() || vocSpellMap.find(player->getVocationId()) != vocSpellMap.end()) {
-			return true;
-		}
+		return player->hasLearnedInstantSpell(getName());
 	}
 
 	return false;
