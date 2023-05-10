@@ -913,7 +913,9 @@ MonsterType* Monsters::loadMonster(const std::string& file, const std::string& m
 			attr = flagNode.first_attribute();
 			const char* attrName = attr.name();
 			if (strcasecmp(attrName, "summonable") == 0) {
-				mType->info.isSummonable = attr.as_bool();
+				mType->info.isSummonable = attr.as_bool();	
+			} else if (strcasecmp(attrName, "rewardboss") == 0) {
+				mType->info.isRewardBoss = attr.as_bool();
 			} else if (strcasecmp(attrName, "attackable") == 0) {
 				mType->info.isAttackable = attr.as_bool();
 			} else if (strcasecmp(attrName, "hostile") == 0) {

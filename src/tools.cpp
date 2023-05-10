@@ -1122,6 +1122,9 @@ std::string getFirstLine(const std::string& str)
 const char* getReturnMessage(ReturnValue value)
 {
 	switch (value) {
+		case RETURNVALUE_REWARDCHESTISEMPTY:
+			return "The chest is currently empty. You did not take part in any battles in the last seven days or already claimed your reward.";
+			
 		case RETURNVALUE_DESTINATIONOUTOFREACH:
 			return "Destination is out of range.";
 
@@ -1299,6 +1302,9 @@ const char* getReturnMessage(ReturnValue value)
 
 		case RETURNVALUE_NOPARTYMEMBERSINRANGE:
 			return "No party members in range.";
+			
+		case RETURNVALUE_YOUCANTOPENCORPSEADM:
+			return "You can't open this corpse, because you are an Admin.";
 
 		case RETURNVALUE_YOUARENOTTHEOWNER:
 			return "You are not the owner.";

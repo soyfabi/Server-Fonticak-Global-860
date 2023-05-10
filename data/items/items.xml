@@ -30188,7 +30188,8 @@
 	<item id="21516" article="a" name="lift" />
 	<item id="21517" article="an" name="ornate door with a keyhole" />
 	<item id="21518" article="a" name="reward container">
-		<attribute key="containersize" value="32" />
+		<attribute key="containersize" value="52" />
+		<attribute key="description" value="This bag contains all the loot." />
 		<attribute key="pickupable" value="0" />
 		<attribute key="moveable" value="0" />
 	</item>
@@ -30259,7 +30260,7 @@
 	</item>
 	<item id="21584" article="a" name="reward chest">
 		<attribute key="type" value="rewardchest" />
-		<attribute key="description" value="This chest contains your rewards earned in battles." />
+		<attribute key="description" value="This chest contains your rewards earned in battles, in the last 7 days." />
 		<attribute key="containersize" value="32" />
 		<attribute key="pickupable" value="0" />
 		<attribute key="moveable" value="0" />

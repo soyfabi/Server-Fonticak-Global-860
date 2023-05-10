@@ -527,6 +527,9 @@ enum item_t : uint16_t {
 	ITEM_LOCKER = 2589,
 	ITEM_INBOX = 2593,
 	
+	ITEM_REWARD_CONTAINER = 21518, // Bag of Loot
+	ITEM_REWARD_CHEST = 21584, // Chest of Reward Boss
+	
 	// move to separate enum class?
 	ITEM_DEPOT_BOX_I = 25453,
 	ITEM_DEPOT_BOX_II = 25454,
