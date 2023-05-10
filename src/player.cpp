@@ -32,6 +32,7 @@
 #include "scheduler.h"
 #include "weapons.h"
 #include "inbox.h"
+#include "tools.h"
 
 #include <fmt/format.h>
 
@@ -64,6 +65,10 @@ Player::~Player()
 			item->setParent(nullptr);
 			item->decrementReferenceCounter();
 		}
+	}
+	
+	if (depotLocker) {
+		depotLocker->removeInbox(inbox);
 	}
 
 	inbox->decrementReferenceCounter();
@@ -802,23 +807,36 @@ DepotChest* Player::getDepotChest(uint32_t depotId, bool autoCreate)
 		return nullptr;
 	}
 
-	it = depotChests.emplace(depotId, new DepotChest(ITEM_DEPOT)).first;
+	uint16_t depotItemId = getDepotBoxId(depotId);
+	if (depotItemId == 0) {
+		return nullptr;
+	}
+
+	it = depotChests.emplace(depotId, new DepotChest(depotItemId)).first;
 	it->second->setMaxDepotItems(getMaxDepotItems());
 	return it->second;
 }
 
-DepotLocker* Player::getDepotLocker(uint32_t depotId)
+DepotLocker& Player::getDepotLocker()
 {
-	auto it = depotLockerMap.find(depotId);
-	if (it != depotLockerMap.end()) {
-		return it->second.get();
+	if (!depotLocker) {
+		depotLocker = std::make_shared<DepotLocker>(ITEM_LOCKER);
+		depotLocker->internalAddThing(inbox);
+		//depotLocker->internalAddThing(Item::CreateItem(ITEM_REWARD_CHEST));
+		//depotLocker->internalAddThing(supplystash);
+		DepotChest* depotChest = new DepotChest(ITEM_DEPOT);
+		if (depotChest) {
+			// adding in reverse to align them from first to last
+			for (int16_t depotId = depotChest->capacity(); depotId >= 0; --depotId) {
+				if (DepotChest* box = getDepotChest(depotId, true)) {
+					depotChest->internalAddThing(box);
+				}
+			}
+			
+			depotLocker->internalAddThing(depotChest);
+		}
 	}
-
-	it = depotLockerMap.emplace(depotId, new DepotLocker(ITEM_LOCKER)).first;
-	it->second->setDepotId(depotId);
-	it->second->internalAddThing(inbox);
-	it->second->internalAddThing(getDepotChest(depotId, true));
-	return it->second.get();
+	return *depotLocker;
 }
 
 void Player::sendCancelMessage(ReturnValue message) const
