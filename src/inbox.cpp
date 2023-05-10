@@ -19,44 +19,54 @@
 
 #include "otpch.h"
 
-#include "depotlocker.h"
+#include "inbox.h"
+#include "tools.h"
 
-DepotLocker::DepotLocker(uint16_t type) : Container(type, 2) {}
+Inbox::Inbox(uint16_t type) : Container(type, 30) {}
 
-Attr_ReadValue DepotLocker::readAttr(AttrTypes_t attr, PropStream& propStream)
+ReturnValue Inbox::queryAdd(int32_t, const Thing& thing, uint32_t,
+		uint32_t flags, Creature*) const
 {
-	if (attr == ATTR_DEPOT_ID) {
-		if (!propStream.read<uint16_t>(depotId)) {
-			return ATTR_READ_ERROR;
-		}
-		return ATTR_READ_CONTINUE;
+	if (!hasBitSet(FLAG_NOLIMIT, flags)) {
+		return RETURNVALUE_CONTAINERNOTENOUGHROOM;
 	}
-	return Item::readAttr(attr, propStream);
+
+	const Item* item = thing.getItem();
+	if (!item) {
+		return RETURNVALUE_NOTPOSSIBLE;
+	}
+
+	if (item == this) {
+		return RETURNVALUE_THISISIMPOSSIBLE;
+	}
+
+	if (!item->isPickupable()) {
+		return RETURNVALUE_CANNOTPICKUP;
+	}
+
+	return RETURNVALUE_NOERROR;
 }
 
-void DepotLocker::postAddNotification(Thing* thing, const Cylinder* oldParent, int32_t index, cylinderlink_t)
+void Inbox::postAddNotification(Thing* thing, const Cylinder* oldParent, int32_t index, cylinderlink_t)
 {
+	Cylinder* parent = getParent();
 	if (parent != nullptr) {
 		parent->postAddNotification(thing, oldParent, index, LINK_PARENT);
 	}
-
-	save = true;
 }
 
-void DepotLocker::postRemoveNotification(Thing* thing, const Cylinder* newParent, int32_t index, cylinderlink_t)
+void Inbox::postRemoveNotification(Thing* thing, const Cylinder* newParent, int32_t index, cylinderlink_t)
 {
+	Cylinder* parent = getParent();
 	if (parent != nullptr) {
 		parent->postRemoveNotification(thing, newParent, index, LINK_PARENT);
 	}
-
-	save = true;
 }
 
-void DepotLocker::removeInbox(Inbox* inbox)
+Cylinder* Inbox::getParent() const
 {
-	auto cit = std::find(itemlist.begin(), itemlist.end(), inbox);
-	if (cit == itemlist.end()) {
-		return;
+	if (parent) {
+		return parent->getParent();
 	}
-	itemlist.erase(cit);
+	return nullptr;
 }

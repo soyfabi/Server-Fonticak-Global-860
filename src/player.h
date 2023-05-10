@@ -31,6 +31,7 @@
 #include "party.h"
 #include "depotchest.h"
 #include "depotlocker.h"
+#include "inbox.h"
 #include "guild.h"
 #include "groups.h"
 #include "town.h"
@@ -206,6 +207,10 @@ class Player final : public Creature, public Cylinder
 		}
 		void setLastWalkthroughPosition(Position walkthroughPosition) {
 			lastWalkthroughPosition = walkthroughPosition;
+		}
+		
+		Inbox* getInbox() const { 
+			return inbox; 
 		}
 
 		uint16_t getClientIcons() const;
@@ -1116,6 +1121,7 @@ class Player final : public Creature, public Cylinder
 		Guild* guild = nullptr;
 		GuildRank_ptr guildRank = nullptr;
 		Group* group = nullptr;
+		Inbox* inbox;
 		Item* tradeItem = nullptr;
  		Item* inventory[CONST_SLOT_LAST + 1] = {};
 		Item* writeItem = nullptr;

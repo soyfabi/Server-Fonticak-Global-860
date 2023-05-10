@@ -31,6 +31,7 @@
 #include "movement.h"
 #include "scheduler.h"
 #include "weapons.h"
+#include "inbox.h"
 
 #include <fmt/format.h>
 
@@ -48,8 +49,13 @@ MuteCountMap Player::muteCountMap;
 uint32_t Player::playerAutoID = 0x10000000;
 
 Player::Player(ProtocolGame_ptr p) :
-	Creature(), lastPing(OTSYS_TIME()), lastPong(lastPing), client(std::move(p))
-{}
+	Creature(), lastPing(OTSYS_TIME()),
+	lastPong(lastPing),
+	inbox(new Inbox(ITEM_INBOX)),
+	client(std::move(p))
+{
+	inbox->incrementReferenceCounter();
+}
 
 Player::~Player()
 {
@@ -60,6 +66,7 @@ Player::~Player()
 		}
 	}
 
+	inbox->decrementReferenceCounter();
 	setWriteItem(nullptr);
 	setEditHouse(nullptr);
 }
@@ -809,6 +816,7 @@ DepotLocker* Player::getDepotLocker(uint32_t depotId)
 
 	it = depotLockerMap.emplace(depotId, new DepotLocker(ITEM_LOCKER)).first;
 	it->second->setDepotId(depotId);
+	it->second->internalAddThing(inbox);
 	it->second->internalAddThing(getDepotChest(depotId, true));
 	return it->second.get();
 }
