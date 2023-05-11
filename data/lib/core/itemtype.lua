@@ -54,6 +54,10 @@ function ItemType:isWand()
 	return self:getWeaponType() == WEAPON_WAND
 end
 
+function ItemType:isQuiver()
+	return self:getWeaponType() == WEAPON_QUIVER
+end
+
 function ItemType:isShield()
 	return self:getWeaponType() == WEAPON_SHIELD
 end
