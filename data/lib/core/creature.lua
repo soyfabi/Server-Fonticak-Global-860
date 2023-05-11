@@ -174,3 +174,41 @@ function Creature:canAccessPz()
 	end
 	return true
 end
+
+function Creature.checkCreatureInsideDoor(player, toPosition)
+	local creature = Tile(toPosition):getTopCreature()
+	if creature then
+		toPosition.x = toPosition.x + 1
+		local query = Tile(toPosition):queryAdd(creature, bit.bor(FLAG_IGNOREBLOCKCREATURE, FLAG_PATHFINDING))
+		if query ~= RETURNVALUE_NOERROR then
+			toPosition.x = toPosition.x - 1
+			toPosition.y = toPosition.y + 1
+			query = Tile(toPosition):queryAdd(creature, bit.bor(FLAG_IGNOREBLOCKCREATURE, FLAG_PATHFINDING))
+		end
+		if query ~= RETURNVALUE_NOERROR then
+			toPosition.y = toPosition.y - 2
+			query = Tile(toPosition):queryAdd(creature, bit.bor(FLAG_IGNOREBLOCKCREATURE, FLAG_PATHFINDING))
+		end
+		if query ~= RETURNVALUE_NOERROR then
+			toPosition.x = toPosition.x - 1
+			toPosition.y = toPosition.y + 1
+			query = Tile(toPosition):queryAdd(creature, bit.bor(FLAG_IGNOREBLOCKCREATURE, FLAG_PATHFINDING))
+		end
+		if query ~= RETURNVALUE_NOERROR then
+			player:sendCancelMessage(RETURNVALUE_NOTPOSSIBLE)
+			return true
+		end
+		creature:teleportTo(toPosition, true)
+	end
+end
+
+function Creature:addEventStamina(target)
+	local player = self:getPlayer()
+	local monster = target:getMonster()
+	if player and monster and monster:getName() == staminaBonus.target then
+		local playerId = player:getId()
+		if not staminaBonus.eventsTrainer[playerId] then
+			staminaBonus.eventsTrainer[playerId] = addEvent(addStamina, staminaBonus.period, playerId)
+		end
+	end
+end

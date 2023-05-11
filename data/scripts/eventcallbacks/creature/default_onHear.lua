@@ -1,6 +1,8 @@
 local event = Event()
-event.onTradeRequest = function(self, target, item)
+function event.onHear(speaker, words, type)
+
 	return true
 end
 
 event:register()
+

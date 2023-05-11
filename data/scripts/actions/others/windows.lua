@@ -20,22 +20,22 @@ function windows.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		end
 	end
 	
-	local tile = fromPosition:getTile()
+	local tile = Tile(toPosition)
 	local house = tile and tile:getHouse()
 	if not house then
 		fromPosition.y = fromPosition.y - 1
-		tile = fromPosition:getTile()
+		tile = Tile(toPosition)
 		house = tile and tile:getHouse()
 		if not house then
 			fromPosition.y = fromPosition.y + 1
 			fromPosition.x = fromPosition.x - 1
-			tile = fromPosition:getTile()
+			tile = Tile(toPosition)
 			house = tile and tile:getHouse()
 		end
 	end
 
 	if house then
-		if player:getPosition():getTile():getHouse() ~= house and player:getAccountType() < ACCOUNT_TYPE_GAMEMASTER then
+		if player:getPosition():Tile(toPosition):getHouse() ~= house and player:getAccountType() < ACCOUNT_TYPE_GAMEMASTER then
 			return false
 		end
 	end
