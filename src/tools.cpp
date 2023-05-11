@@ -1191,6 +1191,9 @@ const char* getReturnMessage(ReturnValue value)
 
 		case RETURNVALUE_DEPOTISFULL:
 			return "You cannot put more items in this depot.";
+			
+		case RETURNVALUE_SUPPLYSTASHISFULL:
+			return "You cannot put more items in the Supply Stash.";
 
 		case RETURNVALUE_CANNOTUSETHISOBJECT:
 			return "You cannot use this object.";

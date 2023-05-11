@@ -53,9 +53,11 @@ Player::Player(ProtocolGame_ptr p) :
 	Creature(), lastPing(OTSYS_TIME()),
 	lastPong(lastPing),
 	inbox(new Inbox(ITEM_INBOX)),
+	supplystash(new SupplyStash(ITEM_SUPPLY_STASH)),
 	client(std::move(p))
 {
 	inbox->incrementReferenceCounter();
+	supplystash->incrementReferenceCounter();
 }
 
 Player::~Player()
@@ -76,6 +78,7 @@ Player::~Player()
 	}
 
 	inbox->decrementReferenceCounter();
+	supplystash->decrementReferenceCounter();
 	setWriteItem(nullptr);
 	setEditHouse(nullptr);
 }
@@ -827,7 +830,7 @@ DepotLocker& Player::getDepotLocker()
 		depotLocker = std::make_shared<DepotLocker>(ITEM_LOCKER);
 		depotLocker->internalAddThing(inbox);
 		//depotLocker->internalAddThing(Item::CreateItem(ITEM_REWARD_CHEST));
-		//depotLocker->internalAddThing(supplystash);
+		depotLocker->internalAddThing(supplystash);
 		DepotChest* depotChest = new DepotChest(ITEM_DEPOT);
 		if (depotChest) {
 			// adding in reverse to align them from first to last

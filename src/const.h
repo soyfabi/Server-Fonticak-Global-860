@@ -526,6 +526,7 @@ enum item_t : uint16_t {
 	ITEM_DEPOT = 2594,
 	ITEM_LOCKER = 2589,
 	ITEM_INBOX = 2593,
+	ITEM_SUPPLY_STASH = 32450,
 	
 	ITEM_REWARD_CONTAINER = 21518, // Bag of Loot
 	ITEM_REWARD_CHEST = 21584, // Chest of Reward Boss

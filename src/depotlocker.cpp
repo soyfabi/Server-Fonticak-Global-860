@@ -21,7 +21,7 @@
 
 #include "depotlocker.h"
 
-DepotLocker::DepotLocker(uint16_t type) : Container(type, 2) {}
+DepotLocker::DepotLocker(uint16_t type) : Container(type, 3) {}
 
 Attr_ReadValue DepotLocker::readAttr(AttrTypes_t attr, PropStream& propStream)
 {
@@ -55,6 +55,15 @@ void DepotLocker::postRemoveNotification(Thing* thing, const Cylinder* newParent
 void DepotLocker::removeInbox(Inbox* inbox)
 {
 	auto cit = std::find(itemlist.begin(), itemlist.end(), inbox);
+	if (cit == itemlist.end()) {
+		return;
+	}
+	itemlist.erase(cit);
+}
+
+void DepotLocker::removeSupplyStash(SupplyStash* supplystash)
+{
+	auto cit = std::find(itemlist.begin(), itemlist.end(), supplystash);
 	if (cit == itemlist.end()) {
 		return;
 	}

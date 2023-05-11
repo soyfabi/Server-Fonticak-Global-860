@@ -26,6 +26,7 @@
 #include "game.h"
 #include "player.h"
 #include "inbox.h"
+#include "supplystash.h"
 
 #include <fmt/format.h>
 
@@ -493,6 +494,36 @@ bool IOLoginData::loadPlayer(Player* player, DBResult_ptr result)
 		}
 	}
 	
+	// load supply stash items
+	itemMap.clear();
+
+	if ((result = db.storeQuery(fmt::format(
+	         "SELECT `pid`, `sid`, `itemtype`, `count`, `attributes` FROM `player_supplystashitems` WHERE `player_id` = {:d} ORDER BY `sid` DESC",
+	         player->getGUID())))) {
+		loadItems(itemMap, result);
+
+		for (ItemMap::const_reverse_iterator it = itemMap.rbegin(), end = itemMap.rend(); it != end; ++it) {
+			const std::pair<Item*, int32_t>& pair = it->second;
+			Item* item = pair.first;
+			int32_t pid = pair.second;
+
+			if (pid >= 0 && pid < 100) {
+				player->getSupplyStash()->internalAddThing(item);
+			} else {
+				ItemMap::const_iterator it2 = itemMap.find(pid);
+
+				if (it2 == itemMap.end()) {
+					continue;
+				}
+
+				Container* container = it2->second.first->getContainer();
+				if (container) {
+					container->internalAddThing(item);
+				}
+			}
+		}
+	}
+	
 	//load reward chest items
 	itemMap.clear();
 	
@@ -804,6 +835,23 @@ bool IOLoginData::savePlayer(Player* player)
 	}
 
 	if (!saveItems(player, itemList, inboxQuery, propWriteStream)) {
+		return false;
+	}
+	
+	// save supply stash items
+	if (!db.executeQuery(fmt::format("DELETE FROM `player_supplystashitems` WHERE `player_id` = {:d}", player->getGUID()))) {
+		return false;
+	}
+
+	DBInsert supplystashQuery(
+	    "INSERT INTO `player_supplystashitems` (`player_id`, `pid`, `sid`, `itemtype`, `count`, `attributes`) VALUES ");
+	itemList.clear();
+
+	for (Item* item : player->getSupplyStash()->getItemList()) {
+		itemList.emplace_back(0, item);
+	}
+
+	if (!saveItems(player, itemList, supplystashQuery, propWriteStream)) {
 		return false;
 	}
 	

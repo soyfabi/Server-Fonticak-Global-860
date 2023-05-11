@@ -40942,7 +40942,7 @@
 		<attribute key="slotType" value="two-handed" />
 	</item>
 	<item id="32450" name="your supply stash">
-		<attribute key="containerSize" value="50" />
+		<attribute key="containerSize" value="52" />
 		<attribute key="description" value="The Supply Stash contains all runes and potions." />
 	</item>
 	<item id="32451" article="a" name="dead burning book">

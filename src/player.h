@@ -32,6 +32,7 @@
 #include "depotchest.h"
 #include "depotlocker.h"
 #include "inbox.h"
+#include "supplystash.h"
 #include "guild.h"
 #include "groups.h"
 #include "town.h"
@@ -213,6 +214,10 @@ class Player final : public Creature, public Cylinder
 		
 		Inbox* getInbox() const { 
 			return inbox; 
+		}
+		
+		SupplyStash* getSupplyStash() const { 
+			return supplystash; 
 		}
 
 		uint16_t getClientIcons() const;
@@ -1123,6 +1128,7 @@ class Player final : public Creature, public Cylinder
 		GuildRank_ptr guildRank = nullptr;
 		Group* group = nullptr;
 		Inbox* inbox;
+		SupplyStash* supplystash;
 		Item* tradeItem = nullptr;
  		Item* inventory[CONST_SLOT_LAST + 1] = {};
 		Item* writeItem = nullptr;
