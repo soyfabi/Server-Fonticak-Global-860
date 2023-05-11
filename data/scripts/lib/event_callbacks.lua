@@ -44,6 +44,7 @@ ec.onLookInShop = {[4] = 1}
 ec.onTradeRequest = {}
 ec.onTradeAccept = {}
 ec.onTradeCompleted = {}
+ec.onUseItem = {}
 ec.onMoveItem = {returnValue=true}
 ec.onItemMoved = {}
 ec.onRotateItem = {}

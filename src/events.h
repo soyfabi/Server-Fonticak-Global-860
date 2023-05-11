@@ -52,6 +52,7 @@ class Events
 		int32_t playerOnLookInBattleList = -1;
 		int32_t playerOnLookInTrade = -1;
 		int32_t playerOnLookInShop = -1;
+		int32_t playerOnUseItem = -1;
 		int32_t playerOnMoveItem = -1;
 		int32_t playerOnItemMoved = -1;
 		int32_t playerOnRotateItem = -1;
@@ -99,6 +100,7 @@ class Events
 		void eventPlayerOnLookInBattleList(Player* player, Creature* creature, int32_t lookDistance);
 		void eventPlayerOnLookInTrade(Player* player, Player* partner, Item* item, int32_t lookDistance);
 		bool eventPlayerOnLookInShop(Player* player, const ItemType* itemType, uint8_t count, const std::string& description);
+		bool eventPlayerOnUseItem(Player* player, Item* item);
 		bool eventPlayerOnMoveItem(Player* player, Item* item, uint16_t count, const Position& fromPosition, const Position& toPosition, Cylinder* fromCylinder, Cylinder* toCylinder);
 		void eventPlayerOnItemMoved(Player* player, Item* item, uint16_t count, const Position& fromPosition, const Position& toPosition, Cylinder* fromCylinder, Cylinder* toCylinder);
 		void eventPlayerOnRotateItem(Player* player, Item* item);
