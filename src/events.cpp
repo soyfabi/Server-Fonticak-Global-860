@@ -112,6 +112,8 @@ bool Events::load()
 				info.playerOnMoveItem = event;
 			} else if (methodName == "onItemMoved") {
 				info.playerOnItemMoved = event;
+			} else if (methodName == "onRotateItem") {
+				info.playerOnRotateItem = event;
 			} else if (methodName == "onMoveCreature") {
 				info.playerOnMoveCreature = event;
 			} else if (methodName == "onReportRuleViolation") {
@@ -732,6 +734,33 @@ void Events::eventPlayerOnItemMoved(Player* player, Item* item, uint16_t count, 
 	LuaScriptInterface::pushCylinder(L, toCylinder);
 
 	scriptInterface.callVoidFunction(7);
+}
+
+void Events::eventPlayerOnRotateItem(Player* player, Item* item)
+{
+	// Player:onRotateItem(item)
+	if (info.playerOnRotateItem == -1) {
+		return;
+	}
+
+	if (!scriptInterface.reserveScriptEnv()) {
+		std::cout << "[Error - Events::eventPlayerOnRotateItem] Call stack overflow" << std::endl;
+		return;
+	}
+
+	ScriptEnvironment* env = scriptInterface.getScriptEnv();
+	env->setScriptId(info.playerOnRotateItem, &scriptInterface);
+
+	lua_State* L = scriptInterface.getLuaState();
+	scriptInterface.pushFunction(info.playerOnRotateItem);
+
+	LuaScriptInterface::pushUserdata<Player>(L, player);
+	LuaScriptInterface::setMetatable(L, -1, "Player");
+
+	LuaScriptInterface::pushUserdata<Item>(L, item);
+	LuaScriptInterface::setItemMetatable(L, -1, item);
+
+	scriptInterface.callFunction(2);
 }
 
 bool Events::eventPlayerOnMoveCreature(Player* player, Creature* creature, const Position& fromPosition, const Position& toPosition)
