@@ -20,6 +20,7 @@
 #include "otpch.h"
 
 #include "events.h"
+#include "monster.h"
 #include "tools.h"
 #include "item.h"
 #include "player.h"
@@ -170,6 +171,9 @@ bool Events::eventMonsterOnSpawn(Monster* monster, const Position& position, boo
 
 	lua_State* L = scriptInterface.getLuaState();
 	scriptInterface.pushFunction(info.monsterOnSpawn);
+	
+	// set monster ID earlier than usual so we can reference it in the script
+	monster->setID();
 
 	LuaScriptInterface::pushUserdata<Monster>(L, monster);
 	LuaScriptInterface::setMetatable(L, -1, "Monster");
