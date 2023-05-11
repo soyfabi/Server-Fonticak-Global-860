@@ -46,6 +46,7 @@ ec.onTradeAccept = {}
 ec.onTradeCompleted = {}
 ec.onMoveItem = {returnValue=true}
 ec.onItemMoved = {}
+ec.onRotateItem = {}
 ec.onMoveCreature = {}
 ec.onReportRuleViolation = {}
 ec.onReportBug = {}

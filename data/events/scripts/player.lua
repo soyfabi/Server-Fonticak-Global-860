@@ -55,6 +55,13 @@ function Player:onItemMoved(item, count, fromPosition, toPosition, fromCylinder,
 	end
 end
 
+function Player:onRotateItem(item)
+	if hasEvent.onRotateItem then
+		return Event.onRotateItem(self, item)
+	end
+	return true
+end
+
 function Player:onMoveCreature(creature, fromPosition, toPosition)
 	if hasEvent.onMoveCreature then
 		return Event.onMoveCreature(self, creature, fromPosition, toPosition)
