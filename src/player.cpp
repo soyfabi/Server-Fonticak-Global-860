@@ -829,7 +829,7 @@ DepotLocker& Player::getDepotLocker()
 	if (!depotLocker) {
 		depotLocker = std::make_shared<DepotLocker>(ITEM_LOCKER);
 		depotLocker->internalAddThing(inbox);
-		//depotLocker->internalAddThing(Item::CreateItem(ITEM_REWARD_CHEST));
+		depotLocker->internalAddThing(Item::CreateItem(ITEM_REWARD_CHEST));
 		depotLocker->internalAddThing(supplystash);
 		DepotChest* depotChest = new DepotChest(ITEM_DEPOT);
 		if (depotChest) {
