@@ -72,22 +72,12 @@ bool ScriptingManager::loadScriptSystems()
 	}
 
 	g_chat = new Chat();
-
 	g_weapons = new Weapons();
-	if (!g_weapons->loadFromXml()) {
-		std::cout << "> ERROR: Unable to load weapons!" << std::endl;
-		return false;
-	}
-
 	g_weapons->loadDefaults();
 	g_spells = new Spells();
 	g_actions = new Actions();
 	g_talkActions = new TalkActions();
 	g_moveEvents = new MoveEvents();
-	if (!g_moveEvents->loadFromXml()) {
-		std::cout << "> ERROR: Unable to load move events!" << std::endl;
-		return false;
-	}
 	g_creatureEvents = new CreatureEvents();
 	g_globalEvents = new GlobalEvents();
 	g_events = new Events();
