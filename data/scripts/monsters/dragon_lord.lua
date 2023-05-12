@@ -1,4 +1,4 @@
-local mType = Game.createMonsterType("Dragon Lord")
+local mType = Game.createMonsterType("Dragons Lord")
 local monster = {}
 
 monster.description = "a dragon lord"
@@ -13,8 +13,8 @@ monster.outfit = {
 	lookMount = 0
 }
 
-monster.health = 1900
-monster.maxHealth = 1900
+monster.health = 1
+monster.maxHealth = 1
 monster.race = "blood"
 monster.corpse = 5984
 monster.speed = 100
@@ -66,34 +66,35 @@ monster.voices = {
 
 monster.loot = {
 	{id = 2842, chance = 9000}, -- book
-	{name = "golden mug", chance = 3190},
-	{name = "small sapphire", chance = 5300},
-	{name = "gold coin", chance = 33750, maxCount = 100},
-	{name = "gold coin", chance = 33750, maxCount = 100},
-	{name = "gold coin", chance = 33750, maxCount = 45},
+	{id = "golden mug", chance = 3190},
+	{id = "small sapphire", chance = 5300},
+	{id = "gold coin", chance = 33750, maxCount = 100},
+	{id = "gold coin", chance = 33750, maxCount = 100},
+	{id = "gold coin", chance = 33750, maxCount = 45},
 	{id = 3051, chance = 5250}, -- energy ring
-	{name = "life crystal", chance = 680},
-	{name = "fire sword", chance = 290},
-	{name = "strange helmet", chance = 360},
-	{name = "dragon scale mail", chance = 170},
-	{name = "royal helmet", chance = 280},
-	{name = "tower shield", chance = 250},
-	{name = "power bolt", chance = 6700, maxCount = 7},
-	{name = "dragon ham", chance = 80000, maxCount = 5},
-	{name = "green mushroom", chance = 12000},
-	{name = "red dragon scale", chance = 1920},
-	{name = "red dragon leather", chance = 1040},
-	{name = "royal spear", chance = 8800, maxCount = 3},
-	{name = "dragon lord trophy", chance = 80},
-	{name = "dragon slayer", chance = 100},
-	{name = "strong health potion", chance = 970}
+	{id = "life crystal", chance = 680},
+	{id = "fire sword", chance = 290},
+	{id = "strange helmet", chance = 360},
+	{id = "dragon scale mail", chance = 170},
+	{id = "royal helmet", chance = 280},
+	{id = "tower shield", chance = 250},
+	{id = "power bolt", chance = 6700, maxCount = 7},
+	{id = "dragon ham", chance = 80000, maxCount = 5},
+	{id = "green mushroom", chance = 12000},
+	{id = "red dragon scale", chance = 1920},
+	{id = "red dragon leather", chance = 1040},
+	{id = "royal spear", chance = 8800, maxCount = 3},
+	{id = "dragon lord trophy", chance = 80},
+	{id = "dragon slayer", chance = 100},
+	{id= "strong health potion", chance = 970}
 }
 
 monster.attacks = {
 	{name ="melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -230},
 	{name ="combat", interval = 2000, chance = 30, type = COMBAT_FIREDAMAGE, minDamage = -100, maxDamage = -220, range = 7, radius = 4, shootEffect = CONST_ANI_FIRE, effect = CONST_ME_FIREAREA, target = true},
-	{name ="firefield", interval = 2000, chance = 10, range = 7, radius = 4, shootEffect = CONST_ANI_FIRE, target = true},
-	{name ="combat", interval = 2000, chance = 22, type = COMBAT_FIREDAMAGE, minDamage = -150, maxDamage = -270, length = 8, spread = 3, effect = CONST_ME_FIREAREA, target = false}
+	{name ="firefield", interval = 2000, chance = 100, range = 7, radius = 4, shootEffect = CONST_ANI_FIRE, target = true},
+	{name ="combat", interval = 2000, chance = 22, type = COMBAT_FIREDAMAGE, minDamage = -150, maxDamage = -270, length = 8, spread = 3, effect = CONST_ME_FIREAREA, target = false},
+	{name = "condition", chance = 100, minDamage = -200, maxDamage = -240, range = 7, radius = 7, effect = CONST_ME_HITBYPOISON, target = false, condition = { type = CONDITION_POISON, minDamage = 400, maxDamage = 640, duration = 5000, interval = 1000}},
 }
 
 monster.defenses = {
