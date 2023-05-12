@@ -1742,26 +1742,27 @@ void LuaScriptInterface::registerFunctions()
 	registerEnum(SKULL_RED)
 	registerEnum(SKULL_BLACK)
 
-	registerEnum(FLUID_NONE)
-	registerEnum(FLUID_WATER)
-	registerEnum(FLUID_BLOOD)
-	registerEnum(FLUID_BEER)
-	registerEnum(FLUID_SLIME)
-	registerEnum(FLUID_LEMONADE)
-	registerEnum(FLUID_MILK)
-	registerEnum(FLUID_MANA)
-	registerEnum(FLUID_LIFE)
-	registerEnum(FLUID_OIL)
+	registerEnum(FLUID_NONE);
+	registerEnum(FLUID_WATER);
+	registerEnum(FLUID_BLOOD);
+	registerEnum(FLUID_BEER);
+	registerEnum(FLUID_SLIME);
+	registerEnum(FLUID_LEMONADE);
+	registerEnum(FLUID_MILK);
+	registerEnum(FLUID_MANA);
+	registerEnum(FLUID_LIFE);
+	registerEnum(FLUID_OIL);
 	registerEnum(FLUID_URINE)
-	registerEnum(FLUID_COCONUTMILK)
-	registerEnum(FLUID_WINE)
-	registerEnum(FLUID_MUD)
-	registerEnum(FLUID_FRUITJUICE)
-	registerEnum(FLUID_LAVA)
-	registerEnum(FLUID_RUM)
-	registerEnum(FLUID_SWAMP)
-	registerEnum(FLUID_TEA)
-	registerEnum(FLUID_MEAD)
+	registerEnum(FLUID_COCONUTMILK);
+	registerEnum(FLUID_WINE);
+	registerEnum(FLUID_MUD);
+	registerEnum(FLUID_FRUITJUICE);
+	registerEnum(FLUID_LAVA);
+	registerEnum(FLUID_RUM);
+	registerEnum(FLUID_SWAMP);
+	registerEnum(FLUID_TEA);
+	registerEnum(FLUID_MEAD);
+	registerEnum(FLUID_INK);
 
 	registerEnum(TALKTYPE_SAY)
 	registerEnum(TALKTYPE_WHISPER)
@@ -13896,6 +13897,8 @@ int LuaScriptInterface::luaMonsterTypeRace(lua_State* L)
 				monsterType->info.race = RACE_FIRE;
 			} else if (race == "energy") {
 				monsterType->info.race = RACE_ENERGY;
+			} else if (race == "ink") {
+				monsterType->info.race = RACE_INK;
 			} else {
 				std::cout << "[Warning - Monsters::loadMonster] Unknown race type " << race << "." << std::endl;
 				lua_pushnil(L);
