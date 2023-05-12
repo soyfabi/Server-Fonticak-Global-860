@@ -28,5 +28,5 @@ function walkback.onStepIn(creature, item, position, fromPosition)
 end
 
 walkback:type("stepin")
-walkback:id(2431, 2432, 2433, 2434, 2469, 2472, 2473, 2478, 2480, 2481, 2482, 21427, 21428, 21429, 21430, 21431, 21432, 21433, 21434)
+walkback:aid(2431, 2432, 2433, 2434, 2469, 2472, 2473, 2478, 2480, 2481, 2482, 21427, 21428, 21429, 21430, 21431, 21432, 21433, 21434)
 walkback:register()

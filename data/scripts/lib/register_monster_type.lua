@@ -394,6 +394,9 @@ local function AbilityTableToSpell(ability)
 					end
 				end
 			end
+			if ability.speedChange then
+				spell:setConditionSpeedChange(ability.speedChange)
+			end
 			if ability.target then
 				spell:setNeedTarget(ability.target)
 			end
@@ -444,7 +447,7 @@ local function AbilityTableToSpell(ability)
 			end
 		end
 	elseif ability.script then
-		spell:setScriptName(ability.script)
+		spell:setScriptName("monster/" .. ability.script .. ".lua")
 		if ability.interval then
 			spell:setInterval(ability.interval)
 		end
